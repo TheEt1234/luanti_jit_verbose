@@ -14,10 +14,12 @@ OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 local ie = core.request_insecure_environment()
 assert(ie, "The jit_verbose mod needs access to insecure environment to import and run jit.v")
 
+local v
+
 do
 	local e = ie.getfenv(0)
 	setfenv(0, ie)
-	local v = ie.require("jit.v")
+	v = ie.require("jit.v")
 	setfenv(0, e)
 end
 
@@ -37,6 +39,7 @@ core.register_chatcommand("jv", {
 			jit.flush(true, true) -- first time this function is used in a luanti mod probably
 		end
 
+		local e = ie.getfenv(0)
 		ie.setfenv(0, ie) -- danger
 		v.start(param)
 		ie.setfenv(0, e) -- no more danger

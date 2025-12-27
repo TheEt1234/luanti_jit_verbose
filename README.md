@@ -173,7 +173,7 @@ Summary
 
 What???? HOW????
 
-Okay, what went wrong here, what, how did it go from 9x faster to 3x slower with such a trivial change??
+Okay, what went wrong here, what, how did it go from 7x faster to 3x slower with such a trivial change??
 
 Let's see, is there any way to get information from the JIT compiler?  
 From the [luajit.org](https://luajit.org/running.html) website: Yes! 
