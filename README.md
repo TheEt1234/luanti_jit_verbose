@@ -1,10 +1,8 @@
-# jit_verbose
-
 Imports the verbose mode of the LuaJIT compiler. (Does the same thing as `luajit -jv <filename>`)
 
 This is the tool you can use when you don't know what to do even with the luaJIT profiler.
 
-After you don't know what to do after using this tool, you should consider creating a mod that does the same thing as the `-jdump` option, or just try asking in the luanti discord server.
+After you don't know what to do after using this tool, you should consider creating a mod that does the same thing as the `-jdump` option, or just try asking in the luanti discord server for improvements.
 
 ## Usage
 
@@ -19,7 +17,9 @@ It's a lot easier to browse it as a file and see what you want.
 If there are certain lines of code you want to be optimising, then search for them in the file you put to `/jv`.  
 Example: if you want to optimize `my_mod_something.lua`, from line 100 to 200, then you could search for `my_mod_something.lua:1` and `my_mod_something.lua:2` in your editor.
 
-You should be concerned about "NYI" (stands for Not Yet Implemented) mainly, and try avoiding functions that are stiches.
+You should be concerned about "NYI" (stands for Not Yet Implemented) mainly, and try avoiding functions that are stiches. 
+
+Here is a possibly outdated and unofficial list of all things NYI: https://github.com/tarantool/tarantool/wiki/LuaJIT-Not-Yet-Implemented (i don't know why luaJIT wiki stopped being a thing)
 
 For a better answer, see the comments in `/usr/share/luajit-2.1/jit/v.lua`:
 ```
@@ -155,6 +155,8 @@ print("Done")
 
 Hmm... luaJIT seems awfully slow today, must be the weather, WAIT why does it say that the current estimate is 9 seconds!?
 
+> [!NOTE]
+> Benchmark times also include the startup time, which i assume for luaJIT is higher
 ```
 Benchmark 1: luajit bad.lua
   Time (mean ± σ):      9.180 s ±  0.759 s    [User: 8.587 s, System: 0.496 s]
@@ -238,6 +240,8 @@ end
 print("Done")
 ```
 
+> [!NOTE]
+> Benchmark times also include the startup time, which i assume for luaJIT is higher
 ```
 ❯ : hyperfine -i "luajit bad.lua" "lua5.1 bad.lua"
 Benchmark 1: luajit bad.lua
