@@ -29,20 +29,19 @@ core.register_chatcommand("jv", {
 	params = "[filename]",
 	description = "Starts/stops the verbose mode of luaJIT and flushes all compiled code. If a filename is not provided it will flush to stderr.",
 	func = function(name, param)
+		started = not started
 		if param == "" or param == " " then
 			param = nil
-		end
-
-		started = not started
-
-		if started == true then
-			jit.flush(true, true) -- first time this function is used in a luanti mod probably
 		end
 
 		local e = ie.getfenv(0)
 		ie.setfenv(0, ie) -- danger
 		v.start(param)
 		ie.setfenv(0, e) -- no more danger
+
+		if started == true then
+			jit.flush() -- first time this function is used in a luanti mod probably
+		end
 		return true, started and "Started." or "Stopped."
 	end,
 })
