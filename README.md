@@ -109,7 +109,7 @@ Also check out the -jdump module, which prints all the gory details.
 ### A little "story" (please don't skip)
 
 We all love luaJIT right? It makes our code faster for free.  
-But often, it could make our code even faster if we just change some small details, or run a lot slower if we do something wrong.
+But often, it could make our code even faster if we just change some small details, or run a lot slower than it should if we do something wrong.
 
 Consider the code:
 ```lua
