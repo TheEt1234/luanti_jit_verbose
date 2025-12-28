@@ -1,6 +1,6 @@
 Imports the verbose mode of the LuaJIT compiler. (Does the same thing as `luajit -jv <filename>`)
 
-This is the tool you can use when you don't know what to do even with the luaJIT profiler (but have specific functions in mind that you hope to optimize).
+This is the tool you can use when you don't know what to do even after using luajit's profiler (but have specific functions in mind that you hope to optimize).
 
 After you don't know what to do after using this tool, you should consider creating a mod that does the same thing as the `-jdump` option in luajit, or just try asking in the luanti discord server for ideas on improvements.
 
