@@ -4,6 +4,10 @@ This is the tool you can use when you don't know what to do even after using lua
 
 After you don't know what to do after using this tool, you should consider creating a mod that does the same thing as the `-jdump` option in luajit, or just try asking in the luanti discord server for ideas on improvements.
 
+## Requirements
+
+You must have luajit installed on your system, or have some way for `require` to detect the `jit.v` module.
+
 ## Usage
 
 This mod registers a `/jv` command. Simply run it (`/jv` with no arguments) and you will have the verbose output in the terminal you launched luanti from.
