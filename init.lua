@@ -12,16 +12,12 @@ OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ]]
 
 local ie = core.request_insecure_environment()
-assert(ie, "The jit_verbose mod needs access to insecure environment to import and run jit.v")
+assert(ie, "The jit_verbose mod needs access to insecure environment to import and use jit.v")
 
-local v
-
-do
-	local e = ie.getfenv(0)
-	setfenv(0, ie)
-	v = ie.require("jit.v")
-	setfenv(0, e)
-end
+local e = ie.getfenv(0)
+setfenv(0, ie)
+local v = ie.require("jit.v")
+setfenv(0, e)
 
 local started = false
 
