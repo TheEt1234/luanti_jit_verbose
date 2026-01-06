@@ -23,6 +23,7 @@ local started = false
 
 core.register_chatcommand("jv", {
 	params = "[filename]",
+	privs = { server = true },
 	description = "Starts/stops the verbose mode of luaJIT and flushes all compiled code. If a filename is not provided it will flush to stderr.",
 	func = function(name, param)
 		started = not started
