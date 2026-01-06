@@ -12,12 +12,25 @@ OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ]]
 
 local ie = core.request_insecure_environment()
-assert(ie, "The jit_verbose mod needs access to insecure environment to import and use jit.v")
+assert(ie, 'The jit_verbose mod needs access to insecure environment to import and use the "jit.v" module.')
 
-local e = ie.getfenv(0)
-setfenv(0, ie)
-local v = ie.require("jit.v")
-setfenv(0, e)
+local e = ie.getfenv(0) -- The current environment
+local v -- the jit.v module
+
+local load_jit_v = function()
+	v = ie.require("jit.v")
+end
+
+setfenv(0, ie) -- temporarily exit mod security
+local ok, errmsg = pcall(load_jit_v) -- For some reason, if it's without pcall it will not error properly
+setfenv(0, e) -- re-instate mod security
+
+if not ok then
+	error(
+		"\n=== Something went wrong while trying to import jit.v, do you have luaJIT installed on your system? (You need to have it, not just in luanti) ===\n\nThe error:\n"
+			.. errmsg
+	)
+end
 
 local started = false
 
